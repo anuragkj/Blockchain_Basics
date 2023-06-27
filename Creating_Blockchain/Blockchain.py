@@ -36,7 +36,7 @@ class Blockchain:
             else:
                 new_proof += 1
                 
-        return new_proof()
+        return new_proof
 
     def hash(self, block):
         encoded_block = json.dumps(block, sort_keys = True).encode()
@@ -75,7 +75,7 @@ def mine_block():
     proof = blockchain.proof_of_work(previous_proof)
     previous_hash = blockchain.hash(previous_block)
     block = blockchain.create_block(proof, previous_hash)
-    response = {'message': 'COngratulations, you just mined a block!',
+    response = {'message': 'Congratulations, you just mined a block!',
                 'index': block['index'],
                 'timestamp': block['timestamp'],
                 'proof': block['proof'],
@@ -89,3 +89,6 @@ def get_chain():
     respose = {'chainkey': blockchain.chain,
                'length': len(blockchain.chain)}
     return jsonify(respose), 200
+
+#Running the app
+app.run(host = '0.0.0.0', port = 5000)

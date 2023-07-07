@@ -1,8 +1,11 @@
-#Creating a blockchain
+#Creating a cryptocurrency
 import datetime
 import hashlib
 import json
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
+import requests
+from uuid import uuid4
+from urllib.parse import urlparse
 
 #Building the blockchain
 
@@ -99,5 +102,9 @@ def is_valid():
     else:
         response = {'message': 'The blockchain is not valid.'}
     return jsonify(response), 200
+
+#Decentralising our blockchain
+
+
 #Running the app
 app.run(host = '0.0.0.0', port = 5000)
